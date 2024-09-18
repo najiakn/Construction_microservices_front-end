@@ -1,45 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Projets } from 'src/Projet';
 import { ProjetServiceService } from 'src/app/services/projet-service.service';
+import {Projets} from "../../../Projet";
 
 @Component({
   selector: 'app-afficher-projet',
-  templateUrl: './afficher-projet.component.html',
+  templateUrl: './afficher-projet.component.html', // Chemin correct vers le template HTML
   styleUrls: ['./afficher-projet.component.css']
 })
-export class AfficherProjetComponent {
-nouveauProjet: any;
-ajouterProjet() {
-throw new Error('Method not implemented.');
-}
+export class AfficherProjetComponent implements OnInit {
   projets: Projets[] = [];
-  errorMessage: string = ''; // Ajout de la propriété errorMessage
+  errorMessage: string = '';
 
   constructor(private projetServiceService: ProjetServiceService,
-    private router:Router) {}
+              private router: Router) {}
 
-ngOnInit(): void {
-this.loadProjets();
-}
+  ngOnInit(): void {
+    this.loadProjets();
+  }
 
-loadProjets(): void {
-this.projetServiceService.allProjets().subscribe(
-(data: Projets[]) => {
-this.projets = data;
-},
-(error: any) => {
-console.error('Erreur lors de la récupération des projets', error);
-this.errorMessage = 'Une erreur est survenue lors du chargement des projets.'; // Attribution d'un message d'erreur
-}
-);
-}
+  loadProjets(): void {
+    this.projetServiceService.allProjets().subscribe(
+      (data: Projets[]) => {
+        this.projets = data;
+        console.log(data);
 
-toTaches(id:number | undefined){
-this.router.navigate(['taches', id])
-}
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération des projets', error);
+        this.errorMessage = 'Une erreur est survenue lors du chargement des projets.';
+      }
+    );
+  }
 
-addTache(id:number | undefined){
-this.router.navigate(['taches/add', id])
-}
+  toTaches(id: number | undefined) {
+    this.router.navigate(['taches', id]);
+  }
+
+  addTache(id: number | undefined) {
+    this.router.navigate(['taches/add', id]);
+  }
 }

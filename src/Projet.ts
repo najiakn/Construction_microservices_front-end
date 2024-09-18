@@ -1,9 +1,8 @@
 export interface Projets{
 
-    id: number;
-nomProjet: string;
-descriptionProjet: string;
-dateDebut: Date;
-dateFin: Date;
-budget: number;
-}
+  id: number;
+  nom: string;
+  description: string;
+  dateDebut: Date;
+  dateFin: Date;
+  budget: number;}

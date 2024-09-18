@@ -36,7 +36,7 @@ export class LoginComponent {
           console.error('Authentication failed', error);
         }
       );
-      this.router.navigate(['home'])
+      this.router.navigate(['afficher-projet'])
     }
   }
 }
