@@ -1,0 +1,19 @@
+<div class="login-container">
+  <h1>Construction Expert</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <h2>Log in</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="email" placeholder="user" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="********" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" class="login-button">Log in</button>
+
+    <a mat-button routerLink="/register" class="forgot-password-link">Creat account?</a>
+  </form>
+</div>
