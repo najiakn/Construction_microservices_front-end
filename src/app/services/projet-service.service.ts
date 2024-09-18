@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Projets } from 'src/Projet';
@@ -7,10 +7,10 @@ import { Projets } from 'src/Projet';
   providedIn: 'root'
 })
 export class ProjetServiceService {
-  apiUrl: any;
+  private apiUrl = 'http://localhost:8222/api/projets/all';
 
   constructor(private http: HttpClient) { }
-  
+
   // Méthode pour ajouter un nouveau projet
   ajouterProjet(projet: Projets): Observable<Projets> {
     return this.http.post<Projets>(`${this.apiUrl}/add`, projet);
@@ -18,7 +18,8 @@ export class ProjetServiceService {
 
   // Méthode pour récupérer tous les projets
   allProjets(): Observable<Projets[]> {
-    return this.http.get<Projets[]>(`${this.apiUrl}/all`);
+    const headers = this.createAuthorizationHeader();
+    return this.http.get<Projets[]>(`${this.apiUrl}`,{ headers: headers || {} });
   }
 
   updateProjets(id:number, Projets: Projets):Observable<Object>{
@@ -27,5 +28,17 @@ export class ProjetServiceService {
   // Méthode pour supprimer un projet
   deleteProjets(id: number): Observable<void> { // Utilisez Observable<void> car la réponse est vide
     return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+  }
+
+  private createAuthorizationHeader(): HttpHeaders | undefined {
+    const jwtToken = localStorage.getItem('token');
+    if (jwtToken) {
+      console.log("JWT token found in local storage", jwtToken);
+      return new HttpHeaders().set("Authorization", "Bearer " + jwtToken);
+    } else {
+      console.log("JWT token not found in local storage");
+      return undefined;
+    }
+
   }
 }
