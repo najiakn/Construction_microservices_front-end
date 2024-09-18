@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';  // Toolbar
 import { MatButtonModule } from '@angular/material/button';    // Buttons
 import { MatIconModule } from '@angular/material/icon';        // Icons
 import { MatCardModule } from '@angular/material/card';
+
 import { LoginComponent } from './login/login.component';        // Cards
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from "@angular/material/input";
@@ -18,19 +19,36 @@ import {HttpClientModule} from "@angular/common/http";
 import { ProjectComponent } from './project/project.component';
 import {RegistreComponent} from "./registre/registre.component";
 
+import { ModifierProjetComponent } from './projet/modifier-projet/modifier-projet.component';
+import { SupprimerProjetComponent } from './projet/supprimer-projet/supprimer-projet.component';
+import { AjouterProjetComponent } from './projet/ajouter-projet/ajouter-projet.component';        // Cards
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { AfficherProjetComponent } from './projet/afficher-projet/afficher-projet.component';
+import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
+
     LoginComponent,
     RegistreComponent,
     ProjectComponent
+
+    AfficherProjetComponent,
+    ModifierProjetComponent,
+    SupprimerProjetComponent,
+    AjouterProjetComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
