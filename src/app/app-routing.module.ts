@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
 import {RegistreComponent} from "./registre/registre.component";
 import { AfficherProjetComponent } from './projet/afficher-projet/afficher-projet.component';
+import { AjouterProjetComponent } from './projet/ajouter-projet/ajouter-projet.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path:'register', component:RegistreComponent},
   {path:'home', component:HomeComponent},
    {path:'', component:HomeComponent},
-  {path:'afficher-projet', component: AfficherProjetComponent}
+  {path:'afficher-projet', component: AfficherProjetComponent},
+  {path:'ajouter-projet', component: AjouterProjetComponent}
+
 
 
 ];

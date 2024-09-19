@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjetServiceService } from 'src/app/services/projet-service.service';
 import {Projets} from "../../../Projet";
+import { ProjetServiceService } from 'src/app/Services/projet-service.service';
 
 @Component({
   selector: 'app-afficher-projet',
@@ -37,7 +37,7 @@ export class AfficherProjetComponent implements OnInit {
     this.router.navigate(['taches', id]);
   }
 
-  addTache(id: number | undefined) {
-    this.router.navigate(['taches/add', id]);
+  addProjet() {
+    this.router.navigate(['ajouter-projet']);
   }
 }

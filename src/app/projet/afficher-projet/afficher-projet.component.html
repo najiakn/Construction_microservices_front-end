@@ -1,8 +1,11 @@
 <div class="container mt-4">
   <h2>Liste des Projets</h2>
+  
   <div *ngIf="errorMessage" class="alert alert-danger">
     {{ errorMessage }}
   </div>
+  <button class="btn btn-primary" (click)="addProjet()">Ajouter Projet</button>
+
   <table class="table table-striped">
     <thead>
     <tr>
@@ -18,14 +21,14 @@
     <tbody>
     <tr *ngFor="let projet of projets">
     <td>{{ projet.id }}</td>
-    <td>{{ projet.nom }}</td>
-    <td>{{ projet.description }}</td>
-    <td>{{ projet.dateDebut}}</td>
-    <td>{{ projet.dateFin}}</td>
+    <td>{{ projet.nom_projet }}</td>
+    <td>{{ projet.description_projet }}</td>
+    <td>{{ projet.date_debut}}</td>
+    <td>{{ projet.date_fin}}</td>
     <td>{{ projet.budget}}</td>
     <td>
-      <button class="btn btn-info" (click)="toTaches(projet.id)">Voir Tâches</button>
-      <button class="btn btn-primary" (click)="addTache(projet.id)">Ajouter Tâche</button>
+      <button class="btn btn-info" (click)="toTaches(projet.id)">modifier projet</button>
+      <button class="btn btn-primary" (click)="addProjet()">Ajouter Projet</button>
     </td>
     </tr>
     </tbody>

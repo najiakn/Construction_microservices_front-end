@@ -7,19 +7,19 @@ import { Projets } from 'src/Projet';
   providedIn: 'root'
 })
 export class ProjetServiceService {
-  private apiUrl = 'http://localhost:8222/api/projets/all';
+  private apiUrl = 'http://localhost:8222/api/projets';
 
   constructor(private http: HttpClient) { }
 
   // Méthode pour ajouter un nouveau projet
   ajouterProjet(projet: Projets): Observable<Projets> {
-    return this.http.post<Projets>(`${this.apiUrl}/add`, projet);
+    return this.http.post<Projets>(`${this.apiUrl}/create-projet`, projet);
   }
 
   // Méthode pour récupérer tous les projets
   allProjets(): Observable<Projets[]> {
     const headers = this.createAuthorizationHeader();
-    return this.http.get<Projets[]>(`${this.apiUrl}`,{ headers: headers || {} });
+    return this.http.get<Projets[]>(`${this.apiUrl}/all`,{ headers: headers || {} });
   }
 
   updateProjets(id:number, Projets: Projets):Observable<Object>{
