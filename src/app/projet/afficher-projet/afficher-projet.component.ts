@@ -40,4 +40,13 @@ export class AfficherProjetComponent implements OnInit {
   addProjet() {
     this.router.navigate(['ajouter-projet']);
   }
+  deleteProjet(idProjet: number): void {
+    if (confirm('Are you sure you want to delete this projet?')) {
+      this.projetServiceService.deleteProjets(idProjet).subscribe(
+        () => this.loadProjets(),
+        error => this.errorMessage = 'Error deleting projet'
+      );
+    }
+  }
+
 }

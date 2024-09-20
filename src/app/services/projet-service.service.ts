@@ -27,8 +27,10 @@ export class ProjetServiceService {
   }
   // Méthode pour supprimer un projet
   deleteProjets(id: number): Observable<void> { // Utilisez Observable<void> car la réponse est vide
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/delete-projet/${id}`);
   }
+
+
 
   private createAuthorizationHeader(): HttpHeaders | undefined {
     const jwtToken = localStorage.getItem('token');
